@@ -1,5 +1,15 @@
 $.ready(function(){
   console.log("ready");
+  onPageLoad();
+  bindListeners();
+}())
+
+function bindListeners(){
+  teacherButtonListener();
+
+}
+
+function onPageLoad(){
   var ajaxRequest = $("#teacher-list").ajax({
     url: "/apis/teachers",
     type: "get"
@@ -7,19 +17,27 @@ $.ready(function(){
   ajaxRequest.then(function(response){
     var teachers = JSON.parse(response);
     for (var i=0; i<teachers.length; i++){
-      // debugger;
-      console.log(teachers[i].name)
       var liTag = document.createElement("LI");
       var aTag = document.createElement("A");
-      aTag.setAttribute("href", "/apis/teachers/" + teachers[i].id);
+      aTag.setAttribute("href", "#" + teachers[i].id);
+      aTag.setAttribute("id", teachers[i].id);
+      aTag.setAttribute("class", "teacher");
       var listItem = document.createTextNode(teachers[i].name);
       aTag.appendChild(listItem);
       liTag.appendChild(aTag);
       $("#teacher-list")[0].appendChild(liTag);
-      // $("#teacher-list")[i].innerHTML += ("<li><a href=# id=" + teachers[i].id +">" + teachers[i].name +"</a></li>");
     }
   })
-  // ajaxRequest.catch(function(){
-  //   console.log("Oops, something broke!");
+  ajaxRequest.catch(function(){
+    console.log("Oops, something broke!");
+  })
+}
+
+function teacherButtonListener(){
+  // This runs when the program starts
+
+  // $("#1").on("click", function(){
+  //   console.log(this);
   // })
-}())
+  // $(".teacher").trigger("click");
+}
