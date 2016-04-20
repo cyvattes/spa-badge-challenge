@@ -12,10 +12,71 @@
     <div class="logo">
       <h1> SPA Badge </h1>
     </div>
-    <h1> SF Teachers </h1>
-      <ul id="teacher-list">
-        <!-- List of Teachers goes Here -->
-      </ul>
+
+    <div class="teacher-visible">
+      <h1> SF Teachers </h1>
+        <ul id="teacher-list">
+          <!-- List of Teachers goes Here -->
+        </ul>
+    </div>
+
+    <div class="badge-visible">
+      <h1>Words To Be Remembered By</h1>
+      <div class="show-user">
+          <h2 id="teacher-name"></h2>
+
+          <!-- This stuff is added in JS loop -->
+          <!-- Slogan -->
+          <div id="1" class="slogan">
+            <div class="body">1) DBC Guru</div>
+            <!-- Upvote -->
+            <div class="vote-on">
+              <form action="#">
+                <input type="hidden" name="slogan_id" value=1>
+                <input type="hidden" name="vote_type" value="up">
+                <button class="up" type="submit" name="submit">
+                  <img src="img/upvote.gif" alt="upvote_image" />
+                </button>
+              </form>
+            </div>
+            <!-- // Upvote // -->
+            <!-- Downvote -->
+            <div class="vote-on">
+              <form action="#">
+                <input type="hidden" name="slogan_id" value=1>
+                <input type="hidden" name="vote_type" value="down">
+                <button class="down" type="submit" name="submit">
+                    <img src="img/downvote.gif" alt="downvote_image" />
+                </button>
+              </form>
+            </div>
+            <!-- // Downvote // -->
+            <!-- Points -->
+            <div class="points">
+              (25 points)
+            </div>
+            <!-- // Points // -->
+          </div>
+          <!-- // Slogan // -->
+
+          <!-- Add Badge -->
+          <div class="add-badge">
+            <h3> Add a Badge: </h3>
+            <form action="#">
+              <input type="hidden" name="user_id" value="5" />
+              <input type="text" name="content" />
+              <input type="image" src="img/add_button.png" alt="Add Slogan" />
+            </form>
+          </div>
+          <!-- // Add Badge // -->
+          <a href="/" id="home">Home</a>
+
+
+
+      </div>
+    </div>
+
+
   </div>
 </body>
 </html>

@@ -179,6 +179,16 @@ th {
 
 /*show.css*/
 
+.teacher-visible {
+  /*visibility: visible;*/
+  display: static;
+}
+
+.badge-visible {
+  /*visibility: hidden;*/
+  display: none;
+}
+
 .show-user h1 {
   font-family: 'Black Ops One', cursive;
   text-align: left;
