@@ -2,23 +2,21 @@ function miniQuery(str) {
   var selectors = [];
     if (str[0] === "#") {
       selectors = [(document.getElementById(str.slice(1)))];
-    }
-    else if (str[0] === ".") {
+    } else if (str[0] === ".") {
       selectors = (document.getElementsByClassName(str.slice(1)));
-    }
-    else {
+    } else {
       selectors = (document.getElementsByTagName(str));
     };
 
   selectors.hide = function() {
     for (var i=0; i < selectors.length; i++) {
-      selectors[i].style.visibility = "hidden";
+      selectors[i].style.display = "none";
     }
   };
 
   selectors.show = function() {
     for (var i=0; i < selectors.length; i++) {
-      selectors[i].style.visibility = "visible";
+      selectors[i].style.display = "inherit";
     }
   };
 
@@ -50,11 +48,7 @@ function miniQuery(str) {
   selectors.ajax = function(args) {
     var promise = new Promise(function(resolve, reject){
       var request = new XMLHttpRequest();
-      var dataURL = args.url;
-      var type = args.type;
-      var data = args.data;
-      // var dataType = "JSON"
-      request.open(type, dataURL);
+      request.open(args.method, args.url);
       request.onload = function() {
         if (request.status >= 200 && request.status < 300){
           resolve(request.response);
@@ -62,7 +56,7 @@ function miniQuery(str) {
           reject(request.response);
         }
       }
-      request.send(data);
+      request.send(args.data);
     })
     return promise;
   };
